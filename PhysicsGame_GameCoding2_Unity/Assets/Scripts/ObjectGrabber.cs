@@ -18,6 +18,8 @@ public class ObjectGrabber : MonoBehaviour
     private Rigidbody heldObject;
     private bool isHolding = false;
 
+    private InteractableObject currentHighlight;
+
     void FixedUpdate()
     {
         //fixed update runs on an interval schedule
@@ -30,11 +32,16 @@ public class ObjectGrabber : MonoBehaviour
 
     void Update()
     {
-               
+        //run the detection raycast every frame to update the highlight 
+        //this is different from grab raycast, it just checks what the player is looking at
+        //and highlights/unhighlights accordingly.
+        UpdateHighlight();
     }
 
     void TryGrab()
     {
+        //We don't necessarily need to check if we are holding an object before picking one up,
+        //since the object we are 
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
@@ -60,6 +67,10 @@ public class ObjectGrabber : MonoBehaviour
                     //zero out any existing velocity so it doesn't fly away
                     heldObject.linearVelocity = Vector3.zero;
                     heldObject.angularVelocity = Vector3.zero;
+
+                    //unhighlight when grabbed, object is now in hand
+                    interactable.UnHighlight();
+                    currentHighlight = null;
 
                     isHolding = true;
                     Debug.Log("Grabbed " + heldObject.name);
@@ -126,6 +137,40 @@ public class ObjectGrabber : MonoBehaviour
     {
         if (isHolding) ThrowObject();
 
+    }
+
+    void UpdateHighlight()
+    {
+        //don't change highlight while holding an object.
+        if(isHolding) return;
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward, Color.red);
+
+        if(Physics.Raycast(ray, out hit, grabRange))
+        {
+            InteractableObject interactable = hit.collider.GetComponent<InteractableObject>();
+            if (interactable != null)
+            {
+                //if we are looking at a different object, unhighlight the old one
+                if(currentHighlight != null && currentHighlight != interactable)
+                {
+                    currentHighlight.UnHighlight();
+                    Debug.Log("Un-Highlighted.");
+                }
+                //highlight the new object.
+                interactable.Highlight();
+                currentHighlight = interactable;
+                return;
+            }
+
+            //raycast hits nothing interactable. Clear highlight
+            if (currentHighlight != null)
+            {
+                currentHighlight.UnHighlight();
+                currentHighlight = null;
+            }
+        }
     }
 
 }
