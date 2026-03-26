@@ -874,6 +874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634950c3dada99542baa913a911000b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  highlightColor: {r: 1, g: 0.95, b: 0.6, a: 1}
+  highlightStrength: 0.7
 --- !u!23 &874917252
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -899,7 +901,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 988264d801505d54eab359501c2ca627, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1037,6 +1039,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634950c3dada99542baa913a911000b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  highlightColor: {r: 1, g: 0.95, b: 0.6, a: 1}
+  highlightStrength: 0.7
 --- !u!65 &1455724751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1083,7 +1087,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 988264d801505d54eab359501c2ca627, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1223,7 +1227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b0e563d1f8ead3145a6a05edf19c0e4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1265,7 +1269,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5203, y: 2.5203, z: 2.5203}
+  m_LocalScale: {x: 22.212664, y: 22.212664, z: 22.212664}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1303,6 +1307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634950c3dada99542baa913a911000b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractableObject
+  highlightColor: {r: 1, g: 0.95, b: 0.6, a: 1}
+  highlightStrength: 0.7
 --- !u!65 &1885422687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1349,7 +1355,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 988264d801505d54eab359501c2ca627, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

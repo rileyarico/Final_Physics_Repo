@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -147,9 +148,28 @@ public class ObjectGrabber : MonoBehaviour
         RaycastHit hit;
         Debug.DrawRay(transform.position, transform.forward, Color.red);
 
-        if(Physics.Raycast(ray, out hit, grabRange))
+        //checks that if we aren't hitting something, we unhighlight 
+        bool hitResult = Physics.Raycast(transform.position, transform.forward, out hit);
+        Debug.Log(hitResult);
+        if (hitResult)
+        {
+
+        }
+        else
+        {
+            if (currentHighlight != null)
+            {
+                //Debug.Log("No hit detected");
+                currentHighlight.UnHighlight();
+                currentHighlight = null;
+                return;
+            }
+        }
+
+        if (Physics.Raycast(ray, out hit, grabRange))
         {
             InteractableObject interactable = hit.collider.GetComponent<InteractableObject>();
+
             if (interactable != null)
             {
                 //if we are looking at a different object, unhighlight the old one
@@ -166,6 +186,15 @@ public class ObjectGrabber : MonoBehaviour
 
             //raycast hits nothing interactable. Clear highlight
             if (currentHighlight != null)
+            {
+                currentHighlight.UnHighlight();
+                currentHighlight = null;
+            }
+        }
+        if (currentHighlight != null)
+        {
+            float dist = Vector3.Distance(currentHighlight.gameObject.transform.position, this.gameObject.transform.position);
+            if (dist > grabRange)
             {
                 currentHighlight.UnHighlight();
                 currentHighlight = null;
