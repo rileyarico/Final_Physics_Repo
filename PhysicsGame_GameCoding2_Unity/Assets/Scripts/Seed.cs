@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class Seed : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public SeedTypes type;
+
 
     // Update is called once per frame
     void Update()

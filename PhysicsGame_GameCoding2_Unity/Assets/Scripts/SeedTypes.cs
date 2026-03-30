@@ -1,16 +1,8 @@
 using UnityEngine;
 
-public class SeedTypes : MonoBehaviour
+public class SeedTypes : ScriptableObject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string seedName;
+    public GameObject grownPrefab;
+    public float growTime;
 }
