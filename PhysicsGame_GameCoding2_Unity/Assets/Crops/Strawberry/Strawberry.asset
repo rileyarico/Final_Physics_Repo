@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d2ff44999466248839f35b34bfe524, type: 3}
   m_Name: Strawberry
   m_EditorClassIdentifier: Assembly-CSharp::SeedTypes
-  seedName: Strawbery
+  seedName: Strawberry
   grownPrefab: {fileID: 8200295596201364750, guid: 21985d486f0509645b6c48cc2ce82534, type: 3}
   growRate: 20

@@ -9,6 +9,7 @@ public class DirtPlot : MonoBehaviour
     public GameObject[] growStates;
     private int growStateIndex = 0;
     private float intervals = 0;
+    private Vector3 growSpace;
 
     [Header("UI")]
     public Image growthProgressBar;
@@ -24,7 +25,10 @@ public class DirtPlot : MonoBehaviour
 
     void Start()
     {
-        
+        //Transform growTransform = gameObject.AddComponent<Transform>();
+        Vector3 whereGrow = new Vector3(transform.position.x, (float)(transform.position.y + 0.1), transform.position.z);
+        //growTransform.position = whereGrow;
+        growSpace = whereGrow;
     }
 
     // Update is called once per frame
@@ -35,13 +39,14 @@ public class DirtPlot : MonoBehaviour
             timeLeft -= Time.deltaTime;
             intervals -= Time.deltaTime;
             updateProgressBar();
+            displayCrop.text = crop.seedName;
             if (timeLeft <= 0)
             {
                 Debug.Log("Crop is done!");
             }
             if (intervals <= 0)
             {
-                manageStates();
+                //manageStates();
                 if(growStateIndex <= growStates.Length)
                 {
                     manageIntervals();
@@ -64,7 +69,7 @@ public class DirtPlot : MonoBehaviour
 
     private void updateProgressBar()
     {
-
+        growthProgressBar.fillAmount = (1 - (float)(timeLeft/growTime));
     }
 
     private void manageStates()
@@ -73,7 +78,7 @@ public class DirtPlot : MonoBehaviour
         {
             GameObject destroyThis = GetComponentInChildren<GameObject>();
             Destroy(destroyThis);
-            Instantiate(growStates[growStateIndex], this.gameObject.transform);
+            Instantiate(growStates[growStateIndex], growSpace, Quaternion.identity, this.gameObject.transform);
             growStateIndex++;
         }
         else
@@ -81,7 +86,7 @@ public class DirtPlot : MonoBehaviour
             GameObject destroyThis = GetComponentInChildren<GameObject>();
             Destroy(destroyThis);
             //instantiate the final cropstate
-            Instantiate(crop.grownPrefab, this.gameObject.transform);
+            Instantiate(crop.grownPrefab, growSpace, Quaternion.identity, this.gameObject.transform);
         }
         //if there is a next state,  
         //sets timer back if this is not a final state
@@ -114,8 +119,9 @@ public class DirtPlot : MonoBehaviour
                 //also checks if the grown prefab exists so we can actually instantiate it later.
                 Destroy(collision.gameObject);
                 //instantiates the first crop state and then increases the index
-                Instantiate(growStates[0], this.gameObject.transform);
+                Instantiate(growStates[0], growSpace, Quaternion.identity, this.gameObject.transform);
                 growStateIndex = 1;
+                isOccupied = true;
             }
             else { Debug.Log("Final crop state prefab is null!"); return; }
             if (crop.growRate != 0)
