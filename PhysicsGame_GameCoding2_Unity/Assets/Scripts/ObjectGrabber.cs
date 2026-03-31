@@ -165,7 +165,7 @@ public class ObjectGrabber : MonoBehaviour
 
         //checks that if we aren't hitting something, we unhighlight 
         bool hitResult = Physics.Raycast(transform.position, transform.forward, out hit);
-        Debug.Log(hitResult);
+        //Debug.Log(hitResult);
         if (hitResult)
         {
 
@@ -191,7 +191,7 @@ public class ObjectGrabber : MonoBehaviour
                 if(currentHighlight != null && currentHighlight != interactable)
                 {
                     currentHighlight.UnHighlight();
-                    Debug.Log("Un-Highlighted.");
+                    //Debug.Log("Un-Highlighted.");
                 }
                 //highlight the new object.
                 interactable.Highlight();

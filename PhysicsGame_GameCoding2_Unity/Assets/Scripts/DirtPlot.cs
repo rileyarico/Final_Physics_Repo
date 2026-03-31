@@ -38,10 +38,10 @@ public class DirtPlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if()
+        if(transform.childCount == 0 && growthProgressBar.fillAmount != 0)
         {
+            ResetEverything();
         }
-        */
         if(isOccupied)
         {
             timeLeft -= Time.deltaTime;
@@ -125,6 +125,7 @@ public class DirtPlot : MonoBehaviour
         Seed seed = collision.gameObject.GetComponent<Seed>();
         if(seed != null)
         {
+            doneGrowing = false;
             //check if the type is null, otherwise we don't destroy it & instantiate prefab
             if(seed.type == null)
             {
