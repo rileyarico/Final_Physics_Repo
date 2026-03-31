@@ -20,33 +20,45 @@ public class DirtPlot : MonoBehaviour
     private float growTime;
     private float timeLeft;
     private GameObject finalGrow;
+    private bool doneGrowing;
+
+    private GameObject currentStatePrefab;
 
 
 
     void Start()
     {
         //Transform growTransform = gameObject.AddComponent<Transform>();
-        Vector3 whereGrow = new Vector3(transform.position.x, (float)(transform.position.y + 0.1), transform.position.z);
+        Vector3 whereGrow = new Vector3(transform.position.x, (float)(transform.position.y + 0.5), transform.position.z);
         //growTransform.position = whereGrow;
         growSpace = whereGrow;
+        doneGrowing = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*if()
+        {
+        }
+        */
         if(isOccupied)
         {
             timeLeft -= Time.deltaTime;
             intervals -= Time.deltaTime;
             updateProgressBar();
             displayCrop.text = crop.seedName;
-            if (timeLeft <= 0)
+            if (timeLeft <= 0 && doneGrowing == false)
             {
                 Debug.Log("Crop is done!");
+                Destroy(currentStatePrefab);
+                currentStatePrefab = null;
+                Instantiate(finalGrow, growSpace, Quaternion.identity, this.gameObject.transform);
+                doneGrowing = true;
             }
             if (intervals <= 0)
             {
-                //manageStates();
+                manageStates();
                 if(growStateIndex <= growStates.Length)
                 {
                     manageIntervals();
@@ -55,15 +67,23 @@ public class DirtPlot : MonoBehaviour
         }
     }
 
+    private void ResetEverything()
+    {
+        crop = null;
+        isOccupied = false;
+        currentStatePrefab = null;
+        growthProgressBar.fillAmount = 0;
+        displayCrop.text = "";
+    }
     private void manageIntervals()
     {
         if(crop.growRate != 0)
         {
-            intervals = crop.growRate / (growStates.Length + 1); //adding plus one, because we manually add the last state
+            intervals = crop.growRate / (growStates.Length); //NVM //adding plus one, because we manually add the last state
         }
         else
         {
-            intervals = 15f / (growStates.Length + 1); //adding plus one, because we manually add the last state
+            intervals = 15f / (growStates.Length); //NVM //adding plus one, because we manually add the last state
         }
     }
 
@@ -76,17 +96,18 @@ public class DirtPlot : MonoBehaviour
     {
         if(growStateIndex < growStates.Length)
         {
-            GameObject destroyThis = GetComponentInChildren<GameObject>();
-            Destroy(destroyThis);
-            Instantiate(growStates[growStateIndex], growSpace, Quaternion.identity, this.gameObject.transform);
+            //GameObject destroyThis = GetComponentInChildren<GameObject>();
+            Destroy(currentStatePrefab);
+            currentStatePrefab = Instantiate(growStates[growStateIndex], growSpace, Quaternion.identity, this.gameObject.transform);
             growStateIndex++;
         }
         else
         {
-            GameObject destroyThis = GetComponentInChildren<GameObject>();
-            Destroy(destroyThis);
+            //GameObject destroyThis = GetComponentInChildren<GameObject>();
+            Destroy(currentStatePrefab);
             //instantiate the final cropstate
-            Instantiate(crop.grownPrefab, growSpace, Quaternion.identity, this.gameObject.transform);
+            //we need to fix the scaling here
+            //currentStatePrefab = Instantiate(crop.grownPrefab, growSpace, Quaternion.identity, this.gameObject.transform);
         }
         //if there is a next state,  
         //sets timer back if this is not a final state
@@ -116,10 +137,11 @@ public class DirtPlot : MonoBehaviour
 
             if (crop.grownPrefab != null)
             {
+                finalGrow = crop.grownPrefab;
                 //also checks if the grown prefab exists so we can actually instantiate it later.
                 Destroy(collision.gameObject);
                 //instantiates the first crop state and then increases the index
-                Instantiate(growStates[0], growSpace, Quaternion.identity, this.gameObject.transform);
+                currentStatePrefab = Instantiate(growStates[0], growSpace, Quaternion.identity, this.gameObject.transform);
                 growStateIndex = 1;
                 isOccupied = true;
             }

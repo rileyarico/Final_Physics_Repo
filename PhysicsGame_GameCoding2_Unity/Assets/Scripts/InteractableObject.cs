@@ -7,6 +7,9 @@ public class InteractableObject : MonoBehaviour
     //how strongly the highlight color blends with the original color 0 = no effect, 1 = full replace (opacity)
     [Range(0, 1f)] public float highlightStrength = 0.4f;
 
+    public bool isHarvestable = false;
+    public GameObject harvest;
+
     private Renderer objectRenderer; //the render comp on this obj
     private Color originalColor; //the color before any highlight was applied
     private bool isHighlighted = false;

@@ -37,6 +37,10 @@ public class ObjectGrabber : MonoBehaviour
         //this is different from grab raycast, it just checks what the player is looking at
         //and highlights/unhighlights accordingly.
         UpdateHighlight();
+        if(heldObject == null )
+        {
+            isHolding = false;
+        }
     }
 
     void TryGrab()
@@ -55,6 +59,17 @@ public class ObjectGrabber : MonoBehaviour
             InteractableObject interactable = hit.collider.GetComponent<InteractableObject>();
             if(interactable != null)
             {
+                if(interactable.isHarvestable == true)
+                {
+                    GameObject thisParent = interactable.transform.parent.gameObject;
+                    GameObject harvest = Instantiate(interactable.harvest, this.gameObject.transform.position, Quaternion.identity);
+
+                    Debug.Log("Instantiated harvest prefab");
+                    isHolding = true;
+                    Destroy(thisParent);
+                    Destroy(interactable);
+                    return;
+                }
                 //get rigidbody so we can move it with physics
                 heldObject = hit.collider.GetComponent<Rigidbody>();
                 if(heldObject != null)
