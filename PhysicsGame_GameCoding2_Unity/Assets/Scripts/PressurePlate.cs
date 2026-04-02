@@ -58,7 +58,7 @@ public class PressurePlate : MonoBehaviour
         if(!isActivated && currentWeight >= weightThreshold)
         {
             isActivated = true;
-            if(lockOnActivate = true) isLocked = true;
+            if(lockOnActivate) isLocked = true;
 
             //calls it for whatever is listening to it
             onActivated.Invoke();
@@ -94,6 +94,35 @@ public class PressurePlate : MonoBehaviour
             CheckActivation();
         }
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        PhysicsObject physicsObject = other.GetComponent<PhysicsObject>();
+        if(physicsObject == null) return;
+
+        //ignore if still being held
+        if (physicsObject.isHeld == true) return;
+
+        if(objectsOnPlate.Add(physicsObject))
+        {
+            currentWeight += physicsObject.puzzleWeight;
+            CheckActivation();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(isLocked) return;
+        PhysicsObject physicsObject = other.GetComponent<PhysicsObject>();
+        if (physicsObject == null) return;
+
+        if(objectsOnPlate.Remove(physicsObject))
+        {
+            currentWeight -= physicsObject.puzzleWeight;
+            currentWeight = Mathf.Max(0f, currentWeight);
+            CheckDeactivation();
+        }
     }
 
     //call this when weight is removed. Deactivates if below threshold
