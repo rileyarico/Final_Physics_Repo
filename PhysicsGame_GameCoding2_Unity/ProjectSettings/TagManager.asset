@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Strawberry_Seed
+  - Corn_Seed
+  - Carrot_Seed
   layers:
   - Default
   - TransparentFX
