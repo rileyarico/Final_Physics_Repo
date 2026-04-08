@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Corn
   m_EditorClassIdentifier: Assembly-CSharp::SeedTypes
   seedName: Corn
-  grownPrefab: {fileID: 0}
+  grownPrefab: {fileID: 7071070048760288394, guid: 1f487027150287f4787c43a7ddb356fb, type: 3}
   growRate: 30

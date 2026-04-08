@@ -663,7 +663,8 @@ PrefabInstance:
       propertyPath: isHarvestable
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6080039998117767394, guid: b07fc9951f4103a4087628e26beaf591, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
