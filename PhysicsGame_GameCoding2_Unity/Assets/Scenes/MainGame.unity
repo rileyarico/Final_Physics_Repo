@@ -1236,10 +1236,10 @@ MonoBehaviour:
   lookSensitivity: 100
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   groundCheckRadius: 0.5
-  groundCheckDistance: 0.8
-  isGrounded: 1
+  groundCheckDistance: 0.5
+  isGrounded: 0
   groundCheck: {fileID: 1266672533}
 --- !u!114 &480798893
 MonoBehaviour:
