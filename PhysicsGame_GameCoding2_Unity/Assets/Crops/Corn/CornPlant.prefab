@@ -616,12 +616,24 @@ PrefabInstance:
       value: Corn
       objectReference: {fileID: 0}
     - target: {fileID: 7589959012363754861, guid: b07fc9951f4103a4087628e26beaf591, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2075518
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589959012363754861, guid: b07fc9951f4103a4087628e26beaf591, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2075518
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589959012363754861, guid: b07fc9951f4103a4087628e26beaf591, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2075518
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589959012363754861, guid: b07fc9951f4103a4087628e26beaf591, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0019501448
       objectReference: {fileID: 0}
     - target: {fileID: 7589959012363754861, guid: b07fc9951f4103a4087628e26beaf591, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.92252254
+      value: 0.963
       objectReference: {fileID: 0}
     - target: {fileID: 7589959012363754861, guid: b07fc9951f4103a4087628e26beaf591, type: 3}
       propertyPath: m_LocalPosition.z
