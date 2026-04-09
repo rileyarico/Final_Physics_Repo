@@ -35,6 +35,7 @@ public class PressurePlate : MonoBehaviour
     Vector3 platePressedPause;
 
     HashSet<PhysicsObject> objectsOnPlate = new HashSet<PhysicsObject>(); //similar to an array, less code
+    HashSet<PhysicsObject> countedObjects = new HashSet<PhysicsObject>();
 
     void Start()
     {
@@ -80,7 +81,7 @@ public class PressurePlate : MonoBehaviour
         PhysicsObject physObj = other.GetComponent<PhysicsObject>();
         if (physObj == null) return;
 
-        if (physObj.isHeld) return; //so it doesn't go off when you're holding it in the trigger area, must be dropped
+        //if (physObj.isHeld) return; //so it doesn't go off when you're holding it in the trigger area, must be dropped
 
         //first simple version:
         /*currentWeight += physObj.puzzleWeight;
@@ -88,12 +89,13 @@ public class PressurePlate : MonoBehaviour
         CheckActivation();*/
 
         //this is instead adding it to a list at first just to make sure nothing gets double activated
-        if (objectsOnPlate.Add(physObj))
+        /*if (objectsOnPlate.Add(physObj))
         {
             currentWeight += physObj.puzzleWeight; 
             CheckActivation();
-        }
+        }*/
 
+        objectsOnPlate.Add(physObj);
     }
 
     private void OnTriggerStay(Collider other)
@@ -101,14 +103,12 @@ public class PressurePlate : MonoBehaviour
         PhysicsObject physicsObject = other.GetComponent<PhysicsObject>();
         if(physicsObject == null) return;
 
-        //ignore if still being held
-        if (physicsObject.isHeld == true) return;
-
-        if(objectsOnPlate.Add(physicsObject))
+        if(!physicsObject.isHeld && countedObjects.Add(physicsObject))
         {
-            currentWeight += physicsObject.puzzleWeight;
+            currentWeight += physicsObject.GetWeight();
             CheckActivation();
         }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -123,6 +123,8 @@ public class PressurePlate : MonoBehaviour
             currentWeight = Mathf.Max(0f, currentWeight);
             CheckDeactivation();
         }
+
+        objectsOnPlate.Remove(physicsObject);
     }
 
     //call this when weight is removed. Deactivates if below threshold

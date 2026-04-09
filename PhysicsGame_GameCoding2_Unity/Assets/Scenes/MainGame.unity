@@ -504,7 +504,7 @@ MonoBehaviour:
   onDeactivated:
     m_PersistentCalls:
       m_Calls: []
-  plate: {fileID: 114483180}
+  plate: {fileID: 366388451}
   pressDepth: 0.1
 --- !u!65 &114483179
 BoxCollider:
@@ -799,7 +799,7 @@ MonoBehaviour:
   onDeactivated:
     m_PersistentCalls:
       m_Calls: []
-  plate: {fileID: 309658795}
+  plate: {fileID: 41788060}
   pressDepth: 0.1
 --- !u!1 &325623624
 GameObject:
