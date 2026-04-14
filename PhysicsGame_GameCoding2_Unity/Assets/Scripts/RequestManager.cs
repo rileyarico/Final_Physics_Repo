@@ -12,11 +12,16 @@ public class RequestManager : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     private float timer = 20f;
+    private bool strawbDone;
+    private bool cornDone;
+    private bool carrotDone;
+
+    private RequestBox[] listOfRequestBoxes;
 
     //Request values
-    private int strawbAmt;
-    private int cornAmt;
-    private int carrotAmt;
+    [HideInInspector] public int strawbAmt;
+    [HideInInspector] public int cornAmt;
+    [HideInInspector] public int carrotAmt;
 
     void Start()
     {
@@ -25,6 +30,18 @@ public class RequestManager : MonoBehaviour
             Debug.Log("Request texts not set up in request manager!");
             return;
         }
+        //grab all RequestBoxes in scene to destroy their children
+        //could also have them set up in inspector, kind of tedious tho
+
+        if(listOfRequestBoxes != null)
+        {
+            foreach(RequestBox obj in listOfRequestBoxes)
+            {
+            
+            }
+
+        }
+        
         NewRequest();
     }
 
@@ -44,6 +61,7 @@ public class RequestManager : MonoBehaviour
     
     void NewRequest()
     {
+        timer = 20f;
         strawbAmt = Random.Range(0, 3);
         cornAmt = Random.Range(0, 2);
         carrotAmt = Random.Range(0, 2);
@@ -60,8 +78,53 @@ public class RequestManager : MonoBehaviour
             carrotText.text = carrotAmt.ToString() + "X";
         }
     }
+
     public void RequestDone()
     {
-        NewRequest();
+        strawbDone = false;
+        cornDone = false;
+        carrotDone = false;
+        //destroy items that were given to request
+        
+        //message that request fufilled
+        NewRequest(); //resets timer in here
+    }
+
+    public int GrabRequestAmt(String req)
+    {
+        if(req == "Strawberry")
+        {
+            return strawbAmt;
+        }
+        if (req == "Corn")
+        {
+            return cornAmt;
+        }
+        if (req == "Carrot")
+        {
+            return carrotAmt;
+        }
+        Debug.Log("Couldn't find req amount. String likely mispelled!");
+        return 0;
+    }
+
+    public void SetItemTrue(String item)
+    {
+        if(item == "Strawberry")
+        {
+            Debug.Log("Strawb complete!");
+            strawbDone = true;
+        }
+        if (item == "Corn")
+        {
+            Debug.Log("Corn complete!");
+            cornDone = true;
+        }
+        if (item == "Carrot")
+        {
+            Debug.Log("Carrot complete!");
+            carrotDone = true;
+        }
+        Debug.Log("Couldn't find bool. String likely mispelled!");
     }
 }
