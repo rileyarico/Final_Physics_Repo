@@ -13,7 +13,7 @@ public class RequestBox : MonoBehaviour
     private int targetCount;
 
     //we build onto this inside this script to keep track of the count of ITEMTOCOUNT prefabs exist here
-    private List<GameObject> boxList = new List<GameObject>();
+    [HideInInspector] public List<GameObject> boxList = new List<GameObject>();
 
     private RequestManager requestManager;
     [HideInInspector] public int thisCount;
@@ -47,34 +47,34 @@ public class RequestBox : MonoBehaviour
     {
         if (other.CompareTag(itemName)) //if the tag matches itemName
         {
-            Debug.Log("Object matches search");
+            //Debug.Log("Object matches search");
             //add to list
             boxList.Add(other.gameObject);
             //ArrayUtility.Add<GameObject>(ref boxElements, other.gameObject);
             thisCount++;
         }
-        Debug.Log("Current List :");
-        foreach (GameObject go in boxList)
+        Debug.Log("Current List in " + itemName + ": " + boxList.Count);
+        /*foreach (GameObject go in boxList)
         {
             Debug.Log(go.name);
-        }
+        }*/
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag(itemName))
         {
-            Debug.Log("Object matches search");
+            //Debug.Log("Object matches search");
             //remove from list
             boxList.Remove(other.gameObject);
             //ArrayUtility.Remove<GameObject>(ref boxElements, other.gameObject);
             thisCount--;
         }
-        Debug.Log("Current List :");
-        foreach (GameObject go in boxList)
+        Debug.Log("Current List in " + itemName + ": " + boxList.Count);
+        /*foreach (GameObject go in boxList)
         {
             Debug.Log(go.name);
-        }
+        }*/
     }
 
     public void DestroyRequested()
@@ -82,8 +82,15 @@ public class RequestBox : MonoBehaviour
         //destroy all items inside this trigger, but only the amount of the request
         for(int i = 0; i < boxList.Count && i < targetCount; i++)
         {
+            Destroy(boxList[0]);
             boxList.RemoveAt(0);
         }
         Debug.Log("Destroyed" + targetCount+ "from " + this.name + " box");
+    }
+
+    public void ResetRequestBoxes()
+    {
+        boxList.Clear();
+        thisCount = 0;
     }
 }

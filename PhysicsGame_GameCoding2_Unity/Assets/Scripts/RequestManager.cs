@@ -53,6 +53,10 @@ public class RequestManager : MonoBehaviour
             timer = 0;
             //Debug.Log("Request failed!!!");
             FailedRequest();
+            foreach (RequestBox box in listOfRequestBoxes)
+            {
+                box.ResetRequestBoxes();
+            }
             NewRequest();
         }
         timerText.text = "Timer: " + timer;
@@ -99,8 +103,12 @@ public class RequestManager : MonoBehaviour
         foreach(RequestBox rq in listOfRequestBoxes)
         {
             rq.DestroyRequested();
+            //reset RequestBoxes
+            rq.ResetRequestBoxes();
         }
+
         //message that request fufilled
+
         Debug.Log("Request fufilled! Starting new request");
         NewRequest(); //resets timer in here
     }

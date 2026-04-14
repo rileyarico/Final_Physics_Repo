@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SeedTypes
   seedName: Carrot
   grownPrefab: {fileID: 8671362187947595911, guid: b2580974d34fc3d418e407a6657ba5af, type: 3}
-  growRate: 40
+  growRate: 10
