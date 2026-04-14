@@ -4,11 +4,15 @@ using System.Collections.Generic;
 
 public class RequestBox : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //given in the inspector. Managing what object we are observing/counting
     public string itemName;
     public GameObject itemToCount;
+
+    //we find this by calling our RqManager (we locate at start)
+    //when targetCount is reached, we should notify RqManager
     private int targetCount;
-    private GameObject[] boxElements; //FIX THIS B!!!
+
+    //we build onto this inside this script to keep track of the count of ITEMTOCOUNT prefabs exist here
     private List<GameObject> boxList = new List<GameObject>();
 
     private RequestManager requestManager;
@@ -34,6 +38,7 @@ public class RequestBox : MonoBehaviour
         targetCount = requestManager.GrabRequestAmt(itemName);
         if(thisCount >= targetCount)
         {
+            Debug.Log("ThisCount of " + itemName + " is equal to our target count. Letting RqManager know...");
             requestManager.SetItemTrue(itemName);
         }
     }
@@ -71,6 +76,7 @@ public class RequestBox : MonoBehaviour
             Debug.Log(go.name);
         }
     }
+
     public void DestroyRequested()
     {
         //destroy all items inside this trigger, but only the amount of the request

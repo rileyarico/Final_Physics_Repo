@@ -32,7 +32,10 @@ public class RequestManager : MonoBehaviour
         }
         //grab all RequestBoxes in scene to destroy their children
         //could also have them set up in inspector, kind of tedious tho
-
+        if(listOfRequestBoxes == null)
+        {
+            Debug.Log("Request boxes not given to RqManager!");
+        }
         
         NewRequest();
     }
@@ -79,6 +82,7 @@ public class RequestManager : MonoBehaviour
     {
         if(strawbDone && cornDone && carrotDone)
         {
+            Debug.Log("Request manager says all bools are true! calling RequestDone()");
             RequestDone();
         }
     }
