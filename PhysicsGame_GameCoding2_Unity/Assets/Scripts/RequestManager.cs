@@ -11,7 +11,7 @@ public class RequestManager : MonoBehaviour
     public TextMeshProUGUI carrotText;
     public TextMeshProUGUI timerText;
 
-    private float timer = 20f;
+    private float timer = 35f;
     private bool strawbDone = false;
     private bool cornDone = false;
     private bool carrotDone = false;
@@ -40,20 +40,24 @@ public class RequestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckRequestDone();
         if(timer >= 0)
         {
             timer -= Time.deltaTime;
         }
         else
         {
+            timer = 0;
             //Debug.Log("Request failed!!!");
+            FailedRequest();
+            NewRequest();
         }
         timerText.text = "Timer: " + timer;
     }
     
     void NewRequest()
     {
-        timer = 20f;
+        timer = 35;
         strawbAmt = Random.Range(0, 3);
         cornAmt = Random.Range(0, 2);
         carrotAmt = Random.Range(0, 2);
@@ -71,15 +75,36 @@ public class RequestManager : MonoBehaviour
         }
     }
 
+    void CheckRequestDone()
+    {
+        if(strawbDone && cornDone && carrotDone)
+        {
+            RequestDone();
+        }
+    }
+
     public void RequestDone()
     {
+        //set UI active
+
+        //set bools to false
         strawbDone = false;
         cornDone = false;
         carrotDone = false;
         //destroy items that were given to request
-        
+        foreach(RequestBox rq in listOfRequestBoxes)
+        {
+            rq.DestroyRequested();
+        }
         //message that request fufilled
+        Debug.Log("Request fufilled! Starting new request");
         NewRequest(); //resets timer in here
+    }
+
+    public void FailedRequest()
+    {
+        //make fail request UI active for few seconds
+        Debug.Log("Request failed! Started new request");
     }
 
     public int GrabRequestAmt(String req)

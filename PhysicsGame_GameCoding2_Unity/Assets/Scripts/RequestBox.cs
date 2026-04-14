@@ -26,6 +26,7 @@ public class RequestBox : MonoBehaviour
         {
             Debug.Log("RqManager not found!");
         }
+        //go thru strings and find right one, set to __Amt
     }
 
     private void Update()
@@ -33,8 +34,7 @@ public class RequestBox : MonoBehaviour
         targetCount = requestManager.GrabRequestAmt(itemName);
         if(thisCount >= targetCount)
         {
-            //make value true in RQ Manager
-            //requestManager.SetItemTrue(itemName);
+            requestManager.SetItemTrue(itemName);
         }
     }
 
@@ -71,9 +71,13 @@ public class RequestBox : MonoBehaviour
             Debug.Log(go.name);
         }
     }
-    void RemoveChildren()
+    public void DestroyRequested()
     {
         //destroy all items inside this trigger, but only the amount of the request
-
+        for(int i = 0; i < boxList.Count && i < targetCount; i++)
+        {
+            boxList.RemoveAt(0);
+        }
+        Debug.Log("Destroyed" + targetCount+ "from " + this.name + " box");
     }
 }
