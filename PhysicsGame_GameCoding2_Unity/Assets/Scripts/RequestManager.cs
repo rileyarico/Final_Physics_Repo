@@ -12,11 +12,11 @@ public class RequestManager : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     private float timer = 20f;
-    private bool strawbDone;
-    private bool cornDone;
-    private bool carrotDone;
+    private bool strawbDone = false;
+    private bool cornDone = false;
+    private bool carrotDone = false;
 
-    private RequestBox[] listOfRequestBoxes;
+    public RequestBox[] listOfRequestBoxes;
 
     //Request values
     [HideInInspector] public int strawbAmt;
@@ -33,14 +33,6 @@ public class RequestManager : MonoBehaviour
         //grab all RequestBoxes in scene to destroy their children
         //could also have them set up in inspector, kind of tedious tho
 
-        if(listOfRequestBoxes != null)
-        {
-            foreach(RequestBox obj in listOfRequestBoxes)
-            {
-            
-            }
-
-        }
         
         NewRequest();
     }
@@ -54,7 +46,7 @@ public class RequestManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Request failed!!!");
+            //Debug.Log("Request failed!!!");
         }
         timerText.text = "Timer: " + timer;
     }

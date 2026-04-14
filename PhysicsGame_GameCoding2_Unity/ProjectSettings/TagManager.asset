@@ -7,6 +7,9 @@ TagManager:
   - Strawberry_Seed
   - Corn_Seed
   - Carrot_Seed
+  - Strawberry
+  - Corn
+  - Carrot
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class RequestBox : MonoBehaviour
 {
@@ -7,7 +8,8 @@ public class RequestBox : MonoBehaviour
     public string itemName;
     public GameObject itemToCount;
     private int targetCount;
-    private GameObject[] boxElements;
+    private GameObject[] boxElements; //FIX THIS B!!!
+    private List<GameObject> boxList = new List<GameObject>();
 
     private RequestManager requestManager;
     [HideInInspector] public int thisCount;
@@ -32,29 +34,41 @@ public class RequestBox : MonoBehaviour
         if(thisCount >= targetCount)
         {
             //make value true in RQ Manager
-            requestManager.SetItemTrue(itemName);
+            //requestManager.SetItemTrue(itemName);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other == itemToCount)
+        if (other.CompareTag(itemName)) //if the tag matches itemName
         {
+            Debug.Log("Object matches search");
             //add to list
-            ArrayUtility.Add<GameObject>(ref boxElements, other.gameObject);
-            Debug.Log(boxElements);
+            boxList.Add(other.gameObject);
+            //ArrayUtility.Add<GameObject>(ref boxElements, other.gameObject);
             thisCount++;
+        }
+        Debug.Log("Current List :");
+        foreach (GameObject go in boxList)
+        {
+            Debug.Log(go.name);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other == itemToCount)
+        if (other.CompareTag(itemName))
         {
+            Debug.Log("Object matches search");
             //remove from list
-            ArrayUtility.Remove<GameObject>(ref boxElements, other.gameObject);
-            Debug.Log(boxElements);
+            boxList.Remove(other.gameObject);
+            //ArrayUtility.Remove<GameObject>(ref boxElements, other.gameObject);
             thisCount--;
+        }
+        Debug.Log("Current List :");
+        foreach (GameObject go in boxList)
+        {
+            Debug.Log(go.name);
         }
     }
     void RemoveChildren()
