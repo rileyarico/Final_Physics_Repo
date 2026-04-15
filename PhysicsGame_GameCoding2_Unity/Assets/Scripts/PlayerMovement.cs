@@ -119,6 +119,12 @@ public class PlayerMovement : MonoBehaviour
         isRunning = context.ReadValueAsButton();
     }
 
+    public void OnPauseMenu()
+    {
+        Debug.Log("Hit ESC");
+        RequestManager rq = FindFirstObjectByType<RequestManager>();
+        rq.ManagePauseMenu();
+    }
     private void GroundCheck()
     {
         //if there is no groundCheck, turn to false & exit
@@ -146,10 +152,12 @@ public class PlayerMovement : MonoBehaviour
     public void UnlockCursor()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
 }

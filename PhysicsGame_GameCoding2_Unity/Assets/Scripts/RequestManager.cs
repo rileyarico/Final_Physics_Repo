@@ -20,7 +20,7 @@ public class RequestManager : MonoBehaviour
     public TextMeshProUGUI score;
 
     [Header("Pause Menu")]
-    public Canvas pauseMenu;
+    public GameObject pauseMenu;
     private bool timerGo = true;
 
     private int winCount;
@@ -37,8 +37,11 @@ public class RequestManager : MonoBehaviour
     [HideInInspector] public int cornAmt;
     [HideInInspector] public int carrotAmt;
 
+    private PlayerMovement player;
+
     void Start()
     {
+        pauseMenu.SetActive(false);
         if(strawbText == null || cornText == null || carrotText == null)
         {
             Debug.Log("Request texts not set up in request manager!");
@@ -50,7 +53,7 @@ public class RequestManager : MonoBehaviour
         {
             Debug.Log("Request boxes not given to RqManager!");
         }
-        
+        player = FindFirstObjectByType<PlayerMovement>();
         NewRequest();
     }
 
@@ -62,7 +65,7 @@ public class RequestManager : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        else
+        if(timer <= 0)
         {
             timer = 0;
             //Debug.Log("Request failed!!!");
@@ -77,13 +80,8 @@ public class RequestManager : MonoBehaviour
         UpdateOverlayUI();
         if(winCount >= 5)
         {
-            PlayerMovement player = FindFirstObjectByType<PlayerMovement>();
             player.UnlockCursor();
             SceneManager.LoadScene("EndScreen");
-        }
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            ManagePauseMenu();
         }
     }
     
@@ -193,21 +191,27 @@ public class RequestManager : MonoBehaviour
 
     }
 
-    private void ManagePauseMenu()
+    public void ManagePauseMenu()
     {
         //will either make active, or set innactive if already active
 
         //make active/pause
-        if (timerGo && !pauseMenu.isActiveAndEnabled)
+        if (timerGo && !pauseMenu.activeSelf)
         {
+            Debug.Log("Attempting to make PauseMenu visible");
             //pause timer
             timerGo = false;
+            player.UnlockCursor();
             pauseMenu.gameObject.SetActive(true);
+            return;
         }
-        if (!timerGo && pauseMenu.isActiveAndEnabled)
+        if (!timerGo && pauseMenu.activeSelf)
         {
+            Debug.Log("Attempting to hide PauseMenu");
             timerGo = true;
+            player.LockCursor();
             pauseMenu.gameObject.SetActive(false);
+            return;
         }
 
 
