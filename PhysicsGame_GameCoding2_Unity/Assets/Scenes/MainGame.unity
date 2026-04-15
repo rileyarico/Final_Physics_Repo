@@ -921,7 +921,7 @@ GameObject:
   - component: {fileID: 156723106}
   - component: {fileID: 156723105}
   - component: {fileID: 156723109}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RequestTriggerCarrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5215,7 +5215,7 @@ GameObject:
   - component: {fileID: 1014399756}
   - component: {fileID: 1014399755}
   - component: {fileID: 1014399759}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RequestTriggerStrawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6851,7 +6851,7 @@ GameObject:
   - component: {fileID: 1301499080}
   - component: {fileID: 1301499079}
   - component: {fileID: 1301499083}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RequestTriggerCorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
