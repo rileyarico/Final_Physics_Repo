@@ -90,7 +90,7 @@ public class RequestBox : MonoBehaviour
 
     public void ResetRequestBoxes()
     {
-        boxList.Clear();
+        boxList = new List<GameObject>();
         thisCount = 0;
     }
 }

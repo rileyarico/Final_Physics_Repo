@@ -1,17 +1,31 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class RequestManager : MonoBehaviour
 {
-    [Header("UI Elements")]
+    [Header("Board UI Elements")]
     public TextMeshProUGUI strawbText;
     public TextMeshProUGUI cornText;
     public TextMeshProUGUI carrotText;
     public TextMeshProUGUI timerText;
 
-    private float timer = 35f;
+    [Header("Screen Overlay UI Elements")]
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI strawberry;
+    public TextMeshProUGUI corn;
+    public TextMeshProUGUI carrot;
+    public TextMeshProUGUI score;
+
+    [Header("Pause Menu")]
+    public Canvas pauseMenu;
+    private bool timerGo = true;
+
+    private int winCount;
+
+    private float timer = 50f;
     private bool strawbDone = false;
     private bool cornDone = false;
     private bool carrotDone = false;
@@ -44,7 +58,7 @@ public class RequestManager : MonoBehaviour
     void Update()
     {
         CheckRequestDone();
-        if(timer >= 0)
+        if(timer >= 0 && timerGo)
         {
             timer -= Time.deltaTime;
         }
@@ -59,12 +73,23 @@ public class RequestManager : MonoBehaviour
             }
             NewRequest();
         }
-        timerText.text = "Timer: " + timer;
+        timerText.text = "Timer: " + (int)timer;
+        UpdateOverlayUI();
+        if(winCount >= 5)
+        {
+            PlayerMovement player = FindFirstObjectByType<PlayerMovement>();
+            player.UnlockCursor();
+            SceneManager.LoadScene("EndScreen");
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ManagePauseMenu();
+        }
     }
     
     void NewRequest()
     {
-        timer = 35;
+        timer = 50;
         strawbAmt = Random.Range(0, 3);
         cornAmt = Random.Range(0, 2);
         carrotAmt = Random.Range(0, 2);
@@ -93,6 +118,7 @@ public class RequestManager : MonoBehaviour
 
     public void RequestDone()
     {
+        winCount++;
         //set UI active
 
         //set bools to false
@@ -155,5 +181,38 @@ public class RequestManager : MonoBehaviour
             carrotDone = true;
         }
         Debug.Log("Couldn't find bool. String likely mispelled!");
+    }
+
+    private void UpdateOverlayUI()
+    {
+        timeText.text = "Timer: " + (int)timer;
+        strawberry.text = strawbAmt + "x";
+        corn.text = cornAmt + "x";
+        carrot.text = carrotAmt + "x";
+        score.text = "Wins: " + winCount;
+
+    }
+
+    private void ManagePauseMenu()
+    {
+        //will either make active, or set innactive if already active
+
+        //make active/pause
+        if (timerGo && !pauseMenu.isActiveAndEnabled)
+        {
+            //pause timer
+            timerGo = false;
+            pauseMenu.gameObject.SetActive(true);
+        }
+        if (!timerGo && pauseMenu.isActiveAndEnabled)
+        {
+            timerGo = true;
+            pauseMenu.gameObject.SetActive(false);
+        }
+
+
+
+
+
     }
 }

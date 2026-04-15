@@ -142,4 +142,14 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(end, groundCheckRadius);
     }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
 }
