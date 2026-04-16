@@ -80,7 +80,7 @@ public class RequestBox : MonoBehaviour
     public void DestroyRequested()
     {
         //destroy all items inside this trigger, but only the amount of the request
-        for(int i = 0; i < boxList.Count && i < targetCount; i++)
+        for(int i = 0; /*i <= boxList.Count - 1 &&*/ i <= targetCount - 1; i++)
         {
             Destroy(boxList[0]);
             boxList.RemoveAt(0);

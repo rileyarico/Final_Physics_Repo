@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float lookSensitivity = 100f;
     private float yaw;
     private float pitch;
-    public bool lockCamera;
+    public bool lockCamera = false;
 
     private Rigidbody rb;
 
