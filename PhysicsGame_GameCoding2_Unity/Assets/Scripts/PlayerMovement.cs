@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public float lookSensitivity = 100f;
     private float yaw;
     private float pitch;
+    public bool lockCamera;
 
     private Rigidbody rb;
 
@@ -45,7 +46,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        CameraLook();
+        if (!lockCamera)
+        {
+            CameraLook();
+        }
         GroundCheck();
     }
 

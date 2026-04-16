@@ -93,7 +93,11 @@ public class RequestManager : MonoBehaviour
         carrotAmt = Random.Range(0, 2);
 
         int cummiliative = strawbAmt + cornAmt + carrotAmt;
-        if (cummiliative > 7)
+        if (cummiliative > 6)
+        {
+            NewRequest();
+        }
+        if(strawbAmt == 0 && cornAmt == 0 && carrotAmt == 0)
         {
             NewRequest();
         }
@@ -203,6 +207,7 @@ public class RequestManager : MonoBehaviour
             timerGo = false;
             player.UnlockCursor();
             pauseMenu.gameObject.SetActive(true);
+            player.lockCamera = true;
             return;
         }
         if (!timerGo && pauseMenu.activeSelf)
@@ -211,6 +216,7 @@ public class RequestManager : MonoBehaviour
             timerGo = true;
             player.LockCursor();
             pauseMenu.gameObject.SetActive(false);
+            player.lockCamera = false;
             return;
         }
 

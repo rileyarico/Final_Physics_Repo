@@ -30,7 +30,7 @@ public class PuzzleManager : MonoBehaviour
         //we use a local copy of i for the lambda to capture the right index
         for(int i = 0; i < puzzles.Length; i++)
         {
-            int index = 1;
+            int index = i;
             puzzles[i].OnCompleted.AddListener(() => OnPuzzleSolved(index));
             puzzles[i].OnReset.AddListener(() => OnPuzzleReset(index));
         }
