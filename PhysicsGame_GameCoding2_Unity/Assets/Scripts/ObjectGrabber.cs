@@ -59,19 +59,26 @@ public class ObjectGrabber : MonoBehaviour
             InteractableObject interactable = hit.collider.GetComponent<InteractableObject>();
             if(interactable != null)
             {
-                if(interactable.isHarvestable == true)
+                //get rigidbody so we can move it with physics
+                heldObject = hit.collider.GetComponent<Rigidbody>();
+
+                //update the rigidbody to the prefab that we are spawning if harvestable
+                if (interactable.isHarvestable == true)
                 {
                     GameObject thisParent = interactable.transform.parent.gameObject;
                     GameObject harvest = Instantiate(interactable.harvest, this.gameObject.transform.position, Quaternion.identity);
 
                     Debug.Log("Instantiated harvest prefab");
+
+                    heldObject = harvest.GetComponent<Rigidbody>();
                     isHolding = true;
+
+
+
                     Destroy(thisParent);
                     Destroy(interactable);
-                    return;
                 }
-                //get rigidbody so we can move it with physics
-                heldObject = hit.collider.GetComponent<Rigidbody>();
+                
                 if(heldObject != null)
                 {
                     //disable gravity so it floats in front of us when held.
@@ -145,8 +152,10 @@ public class ObjectGrabber : MonoBehaviour
 
     public void OnGrabPerformed(InputAction.CallbackContext context)
     {
-        if (isHolding) DropObject();
-        else TryGrab();
+        if(!context.performed) { return; }
+
+        if (isHolding && context.performed) { DropObject(); }
+        else { TryGrab(); }
     }
 
     public void OnThrowPerformed(InputAction.CallbackContext context)
