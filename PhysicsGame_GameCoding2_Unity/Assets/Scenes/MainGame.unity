@@ -1467,7 +1467,11 @@ Transform:
   m_GameObject: {fileID: 309658793}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -1.72, y: 0.09, z: 37.19}
+=======
+  m_LocalPosition: {x: 0, y: 0.09, z: 0}
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1490,22 +1494,11 @@ MonoBehaviour:
   lockOnActivate: 0
   onActivated:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1193308434}
-        m_TargetAssemblyTypeName: PuzzleEvent, Assembly-CSharp
-        m_MethodName: ActivateInput1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDeactivated:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   plate: {fileID: 41788060}
   pressDepth: 0.1
 --- !u!1 &321670054
@@ -1683,6 +1676,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  plate: {fileID: 309658795}
+  pressDepth: 0.1
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,6 +2760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415507924}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.71, y: 0.883, z: 37.19}
   m_LocalScale: {x: 2, y: 0.2, z: 0.2}
@@ -3255,6 +3253,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1337278613}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+=======
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19712
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094555882012632908, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+      propertyPath: m_Name
+      value: Strawberry_Seed (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c626ff210176a6f428744664aa4e0040, type: 3}
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
 --- !u!1 &480798887
 GameObject:
   m_ObjectHideFlags: 0
@@ -6304,6 +6357,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1265669562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+<<<<<<< HEAD
 --- !u!1 &1014399753
 GameObject:
   m_ObjectHideFlags: 0
@@ -6862,6 +6916,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110526155}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
 --- !u!1001 &1137215699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6919,6 +6975,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5f9f8ca86615cc43880d9c68470856f, type: 3}
+<<<<<<< HEAD
 --- !u!4 &1137215700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2597233488087421239, guid: a5f9f8ca86615cc43880d9c68470856f, type: 3}
@@ -7785,6 +7842,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226530129}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+=======
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
 --- !u!1 &1249241754
 GameObject:
   m_ObjectHideFlags: 0
@@ -7851,7 +7910,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 192cbad0dd8320e4d9e392d167c53ee0, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7891,6 +7950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249241754}
   serializedVersion: 2
+<<<<<<< HEAD
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0.58402014, y: 0.269, z: 0.044999838}
   m_LocalScale: {x: 0.04581713, y: 0.04581713, z: 0.04581713}
@@ -7936,6 +7996,15 @@ Transform:
   - {fileID: 2103933815}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -6.325, y: 0.269, z: 2.745}
+  m_LocalScale: {x: 0.04581713, y: 0.04581713, z: 0.04581713}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
 --- !u!1 &1266672532
 GameObject:
   m_ObjectHideFlags: 0
@@ -8330,7 +8399,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: -6.68798
+=======
+      value: -8.07
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
       objectReference: {fileID: 0}
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8338,7 +8411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.57
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8372,10 +8445,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Strawberry_Seed (1)
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6094555882012632908, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11192,7 +11268,6 @@ GameObject:
   - component: {fileID: 1885422687}
   - component: {fileID: 1885422686}
   - component: {fileID: 1885422691}
-  - component: {fileID: 1885422692}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -11303,7 +11378,11 @@ Transform:
   m_GameObject: {fileID: 1885422685}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -5.38, y: 0.5, z: 36.88}
+=======
+  m_LocalPosition: {x: 3.08, y: 0.5, z: 4.22}
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11336,6 +11415,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< HEAD
 --- !u!114 &1885422692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11581,6 +11661,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941559411}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
 --- !u!1 &1963989221
 GameObject:
   m_ObjectHideFlags: 0
@@ -11638,7 +11720,11 @@ Transform:
   m_GameObject: {fileID: 1963989221}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 3.244, y: 0.883, z: 37.19}
+=======
+  m_LocalPosition: {x: 2.72, y: 0.883, z: 0}
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
   m_LocalScale: {x: 2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11657,7 +11743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220833a15794aeb468028adaee99f7e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HingeObject
-  minAngle: 90
+  minAngle: 0
   maxAngle: 180
   useSpring: 1
   springTargetAngle: 90
@@ -11665,19 +11751,7 @@ MonoBehaviour:
   springDamper: 5
   onReachMax:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1193308434}
-        m_TargetAssemblyTypeName: PuzzleEvent, Assembly-CSharp
-        m_MethodName: ActivateInput0
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onReachMin:
     m_PersistentCalls:
       m_Calls: []
@@ -11761,6 +11835,7 @@ MonoBehaviour:
   friction: 0
   puzzleWeight: -1
   isHeld: 0
+<<<<<<< HEAD
 --- !u!1 &1968617147
 GameObject:
   m_ObjectHideFlags: 0
@@ -12684,6 +12759,9 @@ Rigidbody:
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1001 &1095405018870143786
+=======
+--- !u!1001 &5304983021433261005
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -12885,7 +12963,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: -6.2849803
+=======
+      value: -7.39
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
       objectReference: {fileID: 0}
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12893,7 +12975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.31
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2537813372837422991, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12927,10 +13009,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Strawberry_Seed
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6094555882012632908, guid: c626ff210176a6f428744664aa4e0040, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12970,6 +13055,7 @@ SceneRoots:
   - {fileID: 1214712370}
   - {fileID: 9093568547014772985}
   - {fileID: 1310619098}
+<<<<<<< HEAD
   - {fileID: 325623626}
   - {fileID: 2146651810}
   - {fileID: 661311738}
@@ -12981,3 +13067,20 @@ SceneRoots:
   - {fileID: 1301499082}
   - {fileID: 156723108}
   - {fileID: 1337278613}
+=======
+  - {fileID: 456069642}
+  - {fileID: 1858469063}
+  - {fileID: 5304983021433261005}
+  - {fileID: 1137215699}
+  - {fileID: 306879756}
+  - {fileID: 6417986515041957168}
+  - {fileID: 1611523035}
+  - {fileID: 1286272481}
+  - {fileID: 1001065777}
+  - {fileID: 1584336196}
+  - {fileID: 1675756615}
+  - {fileID: 4122896}
+  - {fileID: 1249241758}
+  - {fileID: 309658795}
+  - {fileID: 1963989223}
+>>>>>>> parent of 378ea9a (Adding seedManager, puzzleEvents works)
